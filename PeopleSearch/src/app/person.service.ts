@@ -10,13 +10,22 @@ export class PersonService {
   constructor(private httpClient: HttpClient) { }
 
   getPeople(term: string): Observable<Person[]> {
-    return this.httpClient.get<PersonResponse>(this.server + '/people/' + term)
+    return this.httpClient.get<PeopleResponse>(this.server + '/people/' + term)
       .map((data) => data.people);
       // .map(({people}) => people); // Destructure!!!
+  }
+  getPerson(term: number): Observable<Person> {
+    return this.httpClient.get<PersonResponse>(this.server + '/person/' + term)
+      .map((data) => data.person);
+    // .map(({people}) => people); // Destructure!!!
   }
 }
 
 interface PersonResponse {
+  person: Person;
+}
+
+interface PeopleResponse {
   people: Person[];
 }
 

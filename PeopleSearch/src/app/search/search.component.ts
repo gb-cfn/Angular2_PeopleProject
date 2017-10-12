@@ -1,25 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/Rx';
-import { PersonService } from './person.service';
-import { Person } from './person';
+import { PersonService } from './../person.service';
+import { Person } from './../person';
+
 
 import { FormControl } from '@angular/forms';
-
 @Component({
-  selector: 'app-root',
-  template: `<router-outlet></router-outlet>`,
-
- // templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
 })
-export class AppComponent implements OnInit{
+export class SearchComponent implements OnInit {
   sortColumn: string;
   people: Person[] = [];
   private reverse: boolean;
-private searchInput:FormControl;
+  private searchInput: FormControl;
   constructor(private personService: PersonService) {
   }
-  ngOnInit(){
+  ngOnInit() {
     this.searchInput = new FormControl();
     this.searchInput.valueChanges.debounceTime(1000)
       .subscribe((newValue) => this.checkSearch(newValue));
