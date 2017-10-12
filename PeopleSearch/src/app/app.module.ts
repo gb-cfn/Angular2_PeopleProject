@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {RouterModule}from '@angular/router'
 import { AppComponent } from './app.component';
 import { GenderPipe } from './gender.pipe';
 import { PersonService } from './person.service';
@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
     GenderPipe
   ],
   imports: [
-    BrowserModule, HttpClientModule, FormsModule
+    BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule,RouterModule
   ],
   providers: [ PersonService ],
   bootstrap: [AppComponent]

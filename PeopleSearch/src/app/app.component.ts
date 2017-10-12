@@ -1,21 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import 'rxjs/Rx';
 import { PersonService } from './person.service';
 import { Person } from './person';
+
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   sortColumn: string;
   people: Person[] = [];
   private reverse: boolean;
-
+private searchInput:FormControl;
   constructor(private personService: PersonService) {
   }
+  ngOnInit(){
+    this.searchInput = new FormControl();
+    this.searchInput.valueChanges.debounceTime(1000)
+      .subscribe((newValue) => this.checkSearch(newValue));
 
+  }
   checkSearch(term: string) {
     if (term.length < 2) {
       this.people = [];

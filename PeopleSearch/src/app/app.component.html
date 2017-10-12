@@ -3,9 +3,9 @@
     <div class="col-md-6">
       <form id="search-form">
         <span class="glyphicon glyphicon-search"></span>
-        <input type="text" size="50" class="form-control" id="search-input"
-               #searchBox
-               placeholder="Enter the first part of a last name">
+      <!--<input type="text" size="50" class="form-control" name="search-input" placeholder="Enter the first part of a last name" #searchBox [ngModel]="searchBox.value" (ngModelChange)="checkSearch(searchBox.value)" [formControl]="searchInput">-->
+      <input type="text" size="50" class="form-control" name="search-input" placeholder="Enter the first part of a last name"
+        [formControl]="searchInput">
         <button (click)="checkSearch(searchBox.value)" class="btn btn-default">Search</button>
       </form>
     </div>
