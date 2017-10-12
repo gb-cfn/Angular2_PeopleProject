@@ -5,8 +5,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class GenderPipe implements PipeTransform {
 
-  transform(value: string, args?: any): any {
-    return (value.toUpperCase() === 'F') ? 'Female' : (value.toUpperCase() === 'M') ? 'Male' : 'unknown';
+  transform(value: string, args?: any): string {
+    value = value.toUpperCase();
+    return (value === 'F') ? 'Female' :
+      (value === 'M') ? 'Male' : 'Unknown';
   }
 
 }
